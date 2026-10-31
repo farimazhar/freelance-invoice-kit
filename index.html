@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create clean freelance invoices in your browser. Free, private, and no signup required.">
+  <title>InvoiceKit — Free Invoice Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">✦</span> InvoiceKit</a>
+    <span class="privacy">100% private · No account required</span>
+  </header>
+  <main class="layout">
+    <section class="editor">
+      <div class="intro">
+        <p class="eyebrow">FREE INVOICE GENERATOR</p>
+        <h1>Get paid for your work.</h1>
+        <p>Create a professional invoice in seconds. Your data stays in this browser.</p>
+      </div>
+      <form id="invoice-form">
+        <div class="section-head"><h2>Your details</h2></div>
+        <div class="grid two">
+          <label>Business / freelancer name<input id="fromName" placeholder="Alex Morgan" value="Your Name"></label>
+          <label>Email<input id="fromEmail" type="email" placeholder="you@example.com"></label>
+        </div>
+        <label>Business address<textarea id="fromAddress" rows="2" placeholder="Street, city, country"></textarea></label>
+        <div class="section-head"><h2>Bill to</h2></div>
+        <div class="grid two">
+          <label>Client name<input id="toName" placeholder="Client name"></label>
+          <label>Client email<input id="toEmail" type="email" placeholder="client@example.com"></label>
+        </div>
+        <label>Client address<textarea id="toAddress" rows="2" placeholder="Street, city, country"></textarea></label>
+        <div class="section-head"><h2>Invoice details</h2></div>
+        <div class="grid three">
+          <label>Invoice number<input id="invoiceNo" value="INV-001"></label>
+          <label>Issue date<input id="issueDate" type="date"></label>
+          <label>Due date<input id="dueDate" type="date"></label>
+        </div>
+        <div class="section-head line-head"><h2>Items</h2><button type="button" class="text-btn" id="add-item">＋ Add item</button></div>
+        <div class="items-head"><span>Description</span><span>Qty</span><span>Rate</span><span></span></div>
+        <div id="items"></div>
+        <div class="grid two totals-input">
+          <label>Currency<select id="currency"><option value="USD">USD — $</option><option value="EUR">EUR — €</option><option value="GBP">GBP — £</option><option value="PKR">PKR — Rs</option><option value="AED">AED</option><option value="INR">INR — ₹</option></select></label>
+          <label>Tax (%)<input id="tax" type="number" min="0" max="100" step="0.01" value="0"></label>
+        </div>
+        <label>Notes / payment instructions<textarea id="notes" rows="3" placeholder="Thank you for your business. Payment due within 14 days."></textarea></label>
+        <div class="actions"><button type="button" class="secondary" id="save">Save draft</button><button type="button" class="secondary" id="load">Load draft</button><button type="reset" class="secondary" id="reset">Clear</button></div>
+      </form>
+    </section>
+    <aside class="preview-wrap">
+      <div class="preview-toolbar"><span>LIVE PREVIEW</span><button id="download" class="primary">↓ Download / Print PDF</button></div>
+      <article class="invoice" id="invoice">
+        <div class="invoice-top"><div><div class="invoice-brand">INVOICE</div><p class="muted" id="p-from">Your Name</p><p class="muted" id="p-from-address"></p><p class="muted" id="p-from-email"></p></div><div class="invoice-meta"><strong id="p-number">INV-001</strong><span>Invoice number</span><span>Issued: <b id="p-issue"></b></span><span>Due: <b id="p-due"></b></span></div></div>
+        <div class="bill-to"><span class="muted small">BILL TO</span><strong id="p-client">Client name</strong><p id="p-client-address"></p><p id="p-client-email"></p></div>
+        <table class="preview-table"><thead><tr><th>Description</th><th>Qty</th><th>Rate</th><th>Amount</th></tr></thead><tbody id="p-items"></tbody></table>
+        <div class="summary"><div><span>Subtotal</span><strong id="p-subtotal"></strong></div><div><span>Tax (<b id="p-tax-rate">0</b>%)</span><strong id="p-tax"></strong></div><div class="grand"><span>Total due</span><strong id="p-total"></strong></div></div>
+        <div class="invoice-notes"><strong>Notes</strong><p id="p-notes">Thank you for your business.</p></div>
+        <div class="invoice-footer">Thank you for working with me.</div>
+      </article>
+      <p class="hint">Tip: Choose “Save draft” to keep your invoice on this device. Use your browser’s print dialog to save as PDF.</p>
+    </aside>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
